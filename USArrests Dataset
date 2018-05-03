@@ -1,0 +1,21 @@
+  USArrests$States=row.names(USArrests)
+  
+  #The five states with the highest Murder arrest rates 
+  A=USArrests %>% arrange(-Murder) %>% select(States) %>% head(5)
+  A=A$States
+  
+  #The five states with the highest Assault arrest rates 
+  B=USArrests %>% arrange(-Assault) %>% select(States) %>% head(5)
+  B=B$States
+  
+  #The five states with the highest total arrests (murder + assault + rape)
+  C=USArrests %>% mutate(Total=Murder+Assault+Rape) %>%  arrange(-Total)%>%  select(States) %>%head(5)
+  C=C$States
+  
+  #The five states with the lowest percentage of urban population 
+  D=USArrests %>% arrange(UrbanPop) %>% select(States) %>% head(5)
+  D=D$States
+  
+  #Creating a dataframe
+  Output=data.frame(A,B,C,D)
+  Output
